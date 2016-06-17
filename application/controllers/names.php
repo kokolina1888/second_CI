@@ -41,7 +41,30 @@ class Names extends CI_Controller{
 			$this->names_model->add_name();
 			echo "Successfully added a new name in DB!";
 		}
+	}
 
 
+	public function show_update_name($id){
+		$data['name_info'] = $this->names_model->get_name($id);
+
+		$this->load->view('names/update_name_view', $data);
+	}
+
+	public function update_name($id)
+	{
+		
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('name', 'Име', 'required');
+
+		if($this->form_validation->run() === FALSE)
+		{
+			$this->show_update_name($id);
+		}
+		else 
+		{
+			$this->names_model->update_name($id);
+			echo "Successfully updated a new name in DB!";
+		}
 	}
 }
