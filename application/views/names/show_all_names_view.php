@@ -7,4 +7,6 @@ foreach ($all_names as $key => $value) {
 	echo "</td>";
 	echo "</tr>";
 }
-echo "</pretable>";
+echo "</table>";
+
+echo '<p>Memory: ' . $this->benchmark->memory_usage(). '</p>';
