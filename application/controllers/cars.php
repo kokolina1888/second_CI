@@ -7,6 +7,13 @@ class Cars extends CI_Controller {
 		$this->load->model('cars_model');
 		$this->load->model('makes_model');
 	}
+	public function index(){
+		// $data['info'] = "Class: Cars - index method, this would be seen when user first enters your site";
+		$data['all_cars'] = $this->cars_model->get_all_cars();
+		
+		$this->load->view('car/all_cars_view', $data);
+
+	}
 
 	public function show_all_cars()
 	{

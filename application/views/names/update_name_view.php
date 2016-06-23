@@ -2,7 +2,7 @@
 var_dump($name_info);
 
 echo validation_errors();
-echo form_open('names/update_name/'.$name_info->id);
+echo form_open('names/update-name/'.$name_info->id);
 
 //ID
 $data_id = array(

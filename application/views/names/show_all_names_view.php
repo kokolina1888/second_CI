@@ -1,4 +1,10 @@
 <?php 
+if (!empty($info)) {
+	echo "<h1>$info</h1>";
+}
+
+echo "<p>All names</p>";
+
 echo "<table border=1>";
 foreach ($all_names as $key => $value) {
 	echo "<tr>";
@@ -10,3 +16,4 @@ foreach ($all_names as $key => $value) {
 echo "</table>";
 
 echo '<p>Memory: ' . $this->benchmark->memory_usage(). '</p>';
+

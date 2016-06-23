@@ -1,8 +1,7 @@
 <?php 
 
 echo validation_errors();
-
-echo form_open('names/insert_name');
+echo form_open('names/insert-name');
 
 echo "<p>Enter New Name</p>";
 echo form_input('name');

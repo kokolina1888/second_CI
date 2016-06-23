@@ -10,8 +10,11 @@ class Names extends CI_Controller{
 
 		
 	}
+	public function index(){
+		echo "Mapping routes ";
+	}
 
-	public function show_all_names(){
+	public function show_all_names($add_data = NULL){
 		$this->benchmark->mark('start');
 
 		//$this->load->model('names_model');
@@ -20,6 +23,8 @@ class Names extends CI_Controller{
 		
 		$data['dynamic_view'] = 'names/show_all_names_view';
 		$data['title'] = 'All names';
+
+		$data['info'] = $add_data;
 
 		$this->load->view('templates/main_template', $data);
 		$this->benchmark->mark('end');
@@ -53,7 +58,7 @@ class Names extends CI_Controller{
 		else 
 		{
 			$this->names_model->add_name();
-			echo "Successfully added a new name in DB!";
+			$this->show_all_names();
 		}
 	}
 
@@ -66,6 +71,8 @@ class Names extends CI_Controller{
 
 
 		$this->load->view('templates/main_template', $data);
+
+
 
 	}
 
@@ -83,7 +90,11 @@ class Names extends CI_Controller{
 		else 
 		{
 			$this->names_model->update_name($id);
-			echo "Successfully updated a new name in DB!";
+
+			$info = "Successfully updated a new name in DB!";
+
+			$this->show_all_names($info);
+			
 		}
 	}
 }
